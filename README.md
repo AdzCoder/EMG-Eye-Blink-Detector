@@ -8,7 +8,7 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
   Smart baseline adjustment for reliable blink detection.
 - 📊 **Performance Metrics**  
   Calculates accuracy, precision, recall, and F1-score.
-- 📈 **Visualization**  
+- 📈 **Visualisation**  
   Automatically generates signal plots and confusion matrices.
 - 🔄 **Batch Processing**  
   Supports simultaneous processing of multiple datasets.
@@ -27,7 +27,7 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 
 1. Clone the repository and add it to your MATLAB path:
     ```matlab
-    !git clone https://github.com/yourusername/EMG-Eye-Blink-Detector.git
+    !git clone https://github.com/AdzCoder/EMG-Eye-Blink-Detector.git
     addpath(genpath('EMG-Eye-Blink-Detector'));
     ```
 
