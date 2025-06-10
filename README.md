@@ -18,12 +18,6 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 ## Quick Start
 
 ### Prerequisites
-
-- MATLAB R2020a or later  
-- 
-- 
-
-## Prerequisites
 - **MATLAB R2018b** (minimum) or **R2020a+** (recommended)
 - Toolboxes:
   - [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html) (for `lowpass()`)
