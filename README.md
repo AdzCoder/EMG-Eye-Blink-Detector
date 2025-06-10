@@ -57,8 +57,8 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 ## Project Team
 
 - Group 10  
-- University of Warwick, School of Engineering  
-- ES197: Systems Modelling, Simulation and Computation (22/23)
+- University of Warwick, School of Engineering
+- [ES197: Systems Modelling, Simulation and Computation (22/23)](https://courses.warwick.ac.uk/modules/2022/ES197-15)
 
 ## Project Status
 
