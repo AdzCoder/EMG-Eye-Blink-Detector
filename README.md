@@ -20,8 +20,8 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 ### Prerequisites
 
 - MATLAB R2020a or later  
-- Signal Processing Toolbox  
-- Statistics and Machine Learning Toolbox  
+- [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html)  
+- [Statistics and Machine Learning Toolbox](https://www.mathworks.com/products/statistics.html)  
 
 ### Setup
 
@@ -56,7 +56,7 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 
 ## Project Team
 
-- Group 10 
+- Group 10  
 - University of Warwick, School of Engineering  
 - ES197: Systems Modelling, Simulation and Computation (22/23)
 
