@@ -51,8 +51,12 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
 
 ## Output Examples
 
-- Filtered EMG signal with detected activity overlay (e.g., `emgdata1_analysis.png`)  
-- Confusion matrix and performance metrics saved alongside data files  
+- Filtered EMG signal with detected activity overlay (e.g., [`plots/emgdata1_analysis.png`](plots/emgdata1_analysis.png))  
+
+  ![Filtered EMG signal](plots/emgdata1_analysis.png)
+
+- Confusion matrix and performance metrics saved alongside data files
+
 
 ## Project Team
 
