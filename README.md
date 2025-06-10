@@ -44,7 +44,7 @@ MATLAB-based system for detecting eye blinks from EMG signals, designed for assi
     [activity, accuracy, cm] = emg_signal_processor('data/emgdata1.mat', true);
     ```
 
-- To batch process all datasets (assuming `run_emg_analysis.m` is configured accordingly):
+- To batch process all datasets:
     ```matlab
     run_emg_analysis;
     ```
