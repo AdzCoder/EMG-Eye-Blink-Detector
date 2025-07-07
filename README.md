@@ -1,10 +1,10 @@
 # EMG Signal Processing for Eye Blink Detection
 
-![MATLAB](https://img.shields.io/badge/MATLAB-R2018b+-blue?style=flat-square)
-![Licence](https://img.shields.io/badge/Licence-MIT-orange?style=flat-square)
-![University](https://img.shields.io/badge/University-Warwick-green?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Educational-lightgrey?style=flat-square)
-![Domain](https://img.shields.io/badge/Domain-Signal%20Processing-red?style=flat-square)
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2018b+-blue?style=flat-square)](https://www.mathworks.com/products/matlab.html)
+[![Licence](https://img.shields.io/badge/Licence-MIT-orange?style=flat-square)](https://opensource.org/licenses/MIT)
+[![University](https://img.shields.io/badge/University-Warwick-green?style=flat-square)](https://warwick.ac.uk/)
+[![Status](https://img.shields.io/badge/Status-Educational-lightgrey?style=flat-square)](https://github.com/topics/education)
+[![Domain](https://img.shields.io/badge/Domain-Signal%20Processing-red?style=flat-square)](https://en.wikipedia.org/wiki/Signal_processing)
 
 A MATLAB-based system for detecting eye blinks from EMG signals, designed for assistive communication devices.
 
