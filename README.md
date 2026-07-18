@@ -1,114 +1,62 @@
-# EMG Signal Processing for Eye Blink Detection
+# EMG Eye-Blink Detector
 
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2018b+-blue?style=flat-square)](https://www.mathworks.com/products/matlab.html)
 [![Licence](https://img.shields.io/badge/Licence-MIT-orange?style=flat-square)](LICENSE)
 [![University](https://img.shields.io/badge/University-Warwick-green?style=flat-square)](https://warwick.ac.uk/)
 [![Status](https://img.shields.io/badge/Status-Educational-lightgrey?style=flat-square)](https://github.com/topics/education)
-[![Domain](https://img.shields.io/badge/Domain-Signal%20Processing-red?style=flat-square)](https://en.wikipedia.org/wiki/Signal_processing)
 
-A MATLAB-based system for detecting eye blinks from EMG signals, designed for assistive communication devices.
+MATLAB code that detects eye blinks in electromyography (EMG) signals and turns them into a clean on/off activity signal. The intended use is assistive communication: giving someone with severe motor impairment a reliable muscle-driven switch. This repository holds the signal-processing implementation, refactored from the original coursework scripts into a reusable function with batch processing and performance reporting.
 
-## Overview
+## Background
 
-This project provides a robust framework for processing electromyography (EMG) signals to accurately detect eye blink patterns. The system is particularly suited for assistive technology applications where reliable blink detection is essential for communication interfaces.
+This was the ES197 Systems Modelling, Simulation and Computation project (2022/23), a group brief to design and test an eye-blink detector from EMG data in MATLAB. The motivation is conditions such as Locked-In syndrome, where a small residual muscle movement may be someone's only means of communication. The brief supplied six EMG recordings (each a 14,000-sample vector from a single subject) and asked for a pipeline that recalibrates the time axis, low-pass filters the noisy signal, outputs a 0/1 blink vector against time, and reports precision, recall, and accuracy, with a target accuracy of at least 87%. This repository is the refactored implementation of that pipeline.
 
-## Features
+## How it works
 
-- 🚀 **Adaptive Thresholding**  
-  Intelligent baseline adjustment for reliable blink detection across varying signal conditions
+Each signal is low-pass filtered to strip high-frequency noise, then scanned with a sliding window. Within each window the algorithm compares the local mean and peak against an adaptive baseline (the median of a wider surrounding window); when both exceed their thresholds the window is marked as an active blink. Marking against a rolling baseline rather than a fixed one keeps detection stable as the signal drifts. Where a target signal is available, the code produces a confusion matrix and reports accuracy, precision, recall, and F1.
 
-- 📊 **Performance Metrics**  
-  Comprehensive evaluation with accuracy, precision, recall, and F1-score calculations
+## Requirements
 
-- 📈 **Visualisation**  
-  Automatic generation of signal plots and confusion matrices for analysis
+- **MATLAB** R2018b or later
+- **Signal Processing Toolbox** (for `lowpass`)
+- **Statistics and Machine Learning Toolbox** (for `confusionmat` / `confusionchart`)
 
-- 🔄 **Batch Processing**  
-  Simultaneous processing of multiple datasets for efficient analysis
+## Usage
 
-- 📁 **Report Generation**  
-  Results saved in `.mat` and `.txt` formats for further analysis and documentation
+Clone the repository and add it to your MATLAB path. Place the EMG datasets (`emgdata1.mat` to `emgdata6.mat`) in a `data/` folder.
 
-## Quick Start
-
-### Prerequisites
-
-**Software Requirements:**
-- **MATLAB R2018b** (minimum) or **R2020a+** (recommended)
-
-**Required Toolboxes:**
-- [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html) (for `lowpass()` function)
-- [Statistics and Machine Learning Toolbox](https://www.mathworks.com/products/statistics.html) (for `confusionmat`/`confusionchart` functions)
-
-### Installation
-
-1. **Clone the repository** and add it to your MATLAB path:
-   ```matlab
-   !git clone https://github.com/AdzCoder/EMG-Eye-Blink-Detector.git
-   addpath(genpath('EMG-Eye-Blink-Detector'));
-   ```
-
-2. **Prepare your data** by creating a data folder and adding your EMG datasets:
-   ```matlab
-   mkdir('data')
-   % Place your .mat files (emgdata1.mat to emgdata6.mat) inside the 'data' folder
-   ```
-
-### Usage
-
-**Single Dataset Analysis:**
-Process a single dataset with visualisation enabled:
 ```matlab
+% Single dataset, with plots
 [activity, accuracy, cm] = emg_signal_processor('data/emgdata1.mat', true);
-```
 
-**Batch Processing:**
-Process all datasets simultaneously:
-```matlab
+% All datasets at once
 run_emg_analysis;
 ```
 
-## Output Examples
+Each dataset produces a filtered-signal plot with the detected activity overlaid, a confusion matrix, and the accuracy metrics. Example output is in [`plots/`](plots/).
 
-The system generates comprehensive analysis outputs including:
+![Example analysis](plots/emgdata1_analysis.png)
 
-- **Filtered EMG Signal Plots:** Visual representation of processed signals with detected activity overlay
-  - Example: [`plots/emgdata1_analysis.png`](plots/emgdata1_analysis.png)
-  
-  ![Filtered EMG signal](plots/emgdata1_analysis.png)
+## Data format
 
-- **Performance Reports:** Confusion matrices and statistical metrics saved alongside data files
-- **Analysis Results:** Detailed `.mat` and `.txt` files containing processed data and performance metrics
+Input files are `.mat` files containing the EMG signal vector, and optionally a `target` vector for scoring. Batch processing expects the names `emgdata1.mat` through `emgdata6.mat`; individual files can use any name.
 
-## Data Format
+## Repository layout
 
-Input files should be MATLAB `.mat` files containing EMG signal data. The system expects datasets named `emgdata1.mat` through `emgdata6.mat` for batch processing, though individual files can be processed using custom filenames.
+- `emg_signal_processor.m`: the detection function
+- `run_emg_analysis.m`: batch driver over the `data/` folder
+- `data/`: EMG datasets
+- `plots/`: generated analysis figures
 
-## Algorithm Overview
+## Academic context
 
-The detection system employs:
-1. **Signal Preprocessing:** Low-pass filtering to remove noise and artefacts
-2. **Adaptive Thresholding:** Dynamic baseline adjustment based on signal characteristics
-3. **Blink Detection:** Pattern recognition for eye blink identification
-4. **Performance Evaluation:** Statistical analysis of detection accuracy
+**Module:** [ES197 Systems Modelling, Simulation and Computation (2022/23)](https://courses.warwick.ac.uk/modules/2022/ES197-15) · **Team:** Group 10 · **Institution:** University of Warwick, School of Engineering
 
-## Project Information
-
-**Development Team:** Group 10  
-**Institution:** University of Warwick, School of Engineering  
-**Module:** [ES197: Systems Modelling, Simulation and Computation (2022/23)](https://courses.warwick.ac.uk/modules/2022/ES197-15)
-
-## Project Status
-
-This project was developed as part of a coursework assignment and is provided for educational purposes. The codebase is feature-complete but not actively maintained.
-
-## Contributing
-
-As this is an educational project, contributions are not actively sought. However, if you find this code useful for your research or studies, feel free to fork and adapt it for your needs.
+The project is complete and provided as an educational reference. Feel free to fork and adapt it.
 
 ## Licence
 
-MIT Licence — see the [LICENCE](LICENSE) file for details.
+MIT Licence: see the [LICENCE](LICENSE) file for details.
 
 ---
 
