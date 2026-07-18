@@ -5,7 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  workflow_dispatch:  # ADD THIS - enables manual workflow triggering
+  workflow_dispatch:
 
 jobs:
   test:
@@ -31,8 +31,7 @@ jobs:
           source-folder: .
           test-results-junit: test-results/results.xml
           code-coverage-cobertura: code-coverage/coverage.xml
-      
-      # ADD THESE STEPS - preserves test results and coverage even if tests fail
+
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always()

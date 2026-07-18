@@ -112,4 +112,4 @@ MIT Licence — see the [LICENCE](LICENSE) file for details.
 
 ---
 
-*For questions or issues related to this educational project, please refer to the original coursework documentation or contact the development team through appropriate academic channels.*
+*Developed by Adil Wahab Bhatti as part of academic coursework at the University of Warwick.*
